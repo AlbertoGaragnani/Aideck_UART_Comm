@@ -4,6 +4,7 @@ This is an example on how to use the UART communication protocol to send data fr
 The module has been developed on Ubuntu 20.04 LTS and had been tested using an oscilloscope.
 
 To get started with the example, you need to configure your Crazyflie with the Aideck 1.1: https://www.bitcraze.io/documentation/tutorials/getting-started-with-aideck/
+
 If you installed the docker correctly, you can build the example on the Crazyflie with the following commands:
 
 ```
@@ -26,6 +27,4 @@ cd Aideck_UART_Comm
 sudo docker run --rm -v ${PWD}:/module --device /dev/ttyUSB0 --privileged -P aideck-with-autotiler tools/build/make-example UART_rw flash
 ```
 
-Once you flashed the module, restart the Crazyflie and you should see the m1 led on.
-
-The communication has been tested using an oscilloscope.
+Once you flashed the module, restart the Crazyflie and you see the m1 led on, the module has been correctly set and the communication is working.
