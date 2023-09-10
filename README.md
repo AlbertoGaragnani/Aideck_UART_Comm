@@ -12,7 +12,7 @@ cd Aideck_UART_Comm
 sudo docker run --rm -v ${PWD}:/module aideck-with-autotiler tools/build/make-example UART_rw image
 ```
 
-Flashing the example using the cfclient as stated on the official website won't work, you can use a JTAG instead. You will need to set the JTAG configuration based on you JTAG model in tools -> make-example modifing the following line:
+Flashing the example using the cfclient as stated on the official website won't work, you can use a JTAG instead. You will need to set the JTAG configuration based on you JTAG model in tools -> make-example modifying the following line:
 
 ```
 export GAPY_OPENOCD_CABLE=interface/ftdi/olimex-arm-usb-ocd-h.cfg
@@ -27,4 +27,4 @@ cd Aideck_UART_Comm
 sudo docker run --rm -v ${PWD}:/module --device /dev/ttyUSB0 --privileged -P aideck-with-autotiler tools/build/make-example UART_rw flash
 ```
 
-Once you flashed the module, restart the Crazyflie and you see the m1 led on, the module has been correctly set and the communication is working.
+Once you flashed the module, restart the Crazyflie and you see the m2 led on, the module has been correctly set and the communication is working.
