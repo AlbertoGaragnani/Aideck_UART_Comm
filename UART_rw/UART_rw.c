@@ -56,6 +56,7 @@ static void send_buffer(CPXPacket_t *pkt, uint8_t *buf, uint32_t buf_size) {
 }
 
 int main(void) {
+    // GAP8 Configurations
     pi_bsp_init();
     pi_freq_set(PI_FREQ_DOMAIN_FC, GAP8_FREQUENCY);
     pi_pmu_voltage_set(PI_PMU_DOMAIN_FC, GAP8_VOLTAGE);
@@ -86,7 +87,7 @@ void task_main() {
     pi_gpio_pin_configure(&led_gpio_dev, LED_PIN, PI_GPIO_OUTPUT);
     pi_gpio_pin_write(&led_gpio_dev, LED_PIN, 1);
 
-    // CPX
+    // CPX Initialization and preliminary logs
     cpxInit();
     cpxPrintToConsole(LOG_TO_CRTP, "[UART_rw][task_main] Welcome!\n");
     cpxPrintToConsole(LOG_TO_CRTP, "[UART_rw][task_main] configMINIMAL_STACK_SIZE = %d\n", configMINIMAL_STACK_SIZE);
@@ -94,6 +95,7 @@ void task_main() {
 
     BaseType_t xTask;
 
+    // Create a new task and add it to the list of tasks that are ready to run
     xTask = xTaskCreate(
             task_rw_uart,
             "task_rw_uart",
@@ -107,6 +109,7 @@ void task_main() {
         pmsis_exit(-1);
     }
 
+    // Switch to task_rw_uart Task
     while (1) {
         pi_yield();
     }
